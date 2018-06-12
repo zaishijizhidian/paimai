@@ -1,0 +1,66 @@
+2018-01-09 22:23:46 [scrapy.utils.signal] ERROR: Error caught on signal handler: <bound method TelnetConsole.start_listening of <scrapy.extensions.telnet.TelnetConsole object at 0x7f62e87a16a0>>
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/twisted/internet/tcp.py", line 978, in startListening
+    skt.bind(addr)
+OSError: [Errno 98] Address already in use
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/twisted/internet/defer.py", line 150, in maybeDeferred
+    result = f(*args, **kw)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/pydispatch/robustapply.py", line 55, in robustApply
+    return receiver(*arguments, **named)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/extensions/telnet.py", line 56, in start_listening
+    self.port = listen_tcp(self.portrange, self.host, self)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/utils/reactor.py", line 14, in listen_tcp
+    return reactor.listenTCP(x, factory, interface=host)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/twisted/internet/posixbase.py", line 495, in listenTCP
+    p.startListening()
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/twisted/internet/tcp.py", line 980, in startListening
+    raise CannotListenError(self.interface, self.port, le)
+twisted.internet.error.CannotListenError: Couldn't listen on 127.0.0.1:6073: [Errno 98] Address already in use.
+2018-01-09 22:25:53 [scrapy.utils.signal] ERROR: Error caught on signal handler: <bound method TelnetConsole.start_listening of <scrapy.extensions.telnet.TelnetConsole object at 0x7f3d24d4f6a0>>
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/twisted/internet/tcp.py", line 978, in startListening
+    skt.bind(addr)
+OSError: [Errno 98] Address already in use
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/twisted/internet/defer.py", line 150, in maybeDeferred
+    result = f(*args, **kw)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/pydispatch/robustapply.py", line 55, in robustApply
+    return receiver(*arguments, **named)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/extensions/telnet.py", line 56, in start_listening
+    self.port = listen_tcp(self.portrange, self.host, self)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/utils/reactor.py", line 14, in listen_tcp
+    return reactor.listenTCP(x, factory, interface=host)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/twisted/internet/posixbase.py", line 495, in listenTCP
+    p.startListening()
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/twisted/internet/tcp.py", line 980, in startListening
+    raise CannotListenError(self.interface, self.port, le)
+twisted.internet.error.CannotListenError: Couldn't listen on 127.0.0.1:6073: [Errno 98] Address already in use.
+2018-01-09 22:45:46 [scrapy.utils.signal] ERROR: Error caught on signal handler: <bound method TelnetConsole.start_listening of <scrapy.extensions.telnet.TelnetConsole object at 0x7f57dc967588>>
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/twisted/internet/tcp.py", line 978, in startListening
+    skt.bind(addr)
+OSError: [Errno 98] Address already in use
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/twisted/internet/defer.py", line 150, in maybeDeferred
+    result = f(*args, **kw)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/pydispatch/robustapply.py", line 55, in robustApply
+    return receiver(*arguments, **named)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/extensions/telnet.py", line 56, in start_listening
+    self.port = listen_tcp(self.portrange, self.host, self)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/utils/reactor.py", line 14, in listen_tcp
+    return reactor.listenTCP(x, factory, interface=host)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/twisted/internet/posixbase.py", line 495, in listenTCP
+    p.startListening()
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/twisted/internet/tcp.py", line 980, in startListening
+    raise CannotListenError(self.interface, self.port, le)
+twisted.internet.error.CannotListenError: Couldn't listen on 127.0.0.1:6073: [Errno 98] Address already in use.

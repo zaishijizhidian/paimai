@@ -1,0 +1,37 @@
+2018-04-24 17:56:06 [twisted] CRITICAL: Unhandled error in Deferred:
+2018-04-24 17:56:06 [twisted] CRITICAL: 
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/twisted/internet/defer.py", line 1386, in _inlineCallbacks
+    result = g.send(result)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/crawler.py", line 77, in crawl
+    self.engine = self._create_engine()
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/crawler.py", line 102, in _create_engine
+    return ExecutionEngine(self, lambda _: self.stop())
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/core/engine.py", line 70, in __init__
+    self.scraper = Scraper(crawler)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/core/scraper.py", line 71, in __init__
+    self.itemproc = itemproc_cls.from_crawler(crawler)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/middleware.py", line 58, in from_crawler
+    return cls.from_settings(crawler.settings, crawler)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/middleware.py", line 40, in from_settings
+    mw = mwcls()
+  File "/tmp/sipai-1524563033-iv3nttu3.egg/PAIMAI/pipelines.py", line 58, in __init__
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/pymongo/database.py", line 1075, in authenticate
+    connect=True)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/pymongo/mongo_client.py", line 547, in _cache_credentials
+    sock_info.authenticate(credentials)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/pymongo/pool.py", line 581, in authenticate
+    auth.authenticate(credentials, self)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/pymongo/auth.py", line 486, in authenticate
+    auth_func(credentials, sock_info)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/pymongo/auth.py", line 466, in _authenticate_default
+    return _authenticate_scram_sha1(credentials, sock_info)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/pymongo/auth.py", line 209, in _authenticate_scram_sha1
+    res = sock_info.command(source, cmd)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/pymongo/pool.py", line 477, in command
+    collation=collation)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/pymongo/network.py", line 116, in command
+    parse_write_concern_error=parse_write_concern_error)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/pymongo/helpers.py", line 210, in _check_command_response
+    raise OperationFailure(msg % errmsg, code, response)
+pymongo.errors.OperationFailure: Authentication failed.
