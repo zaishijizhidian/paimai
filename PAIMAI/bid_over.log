@@ -24875,3 +24875,18 @@ Traceback (most recent call last):
   File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/item.py", line 59, in __getitem__
     return self._values[key]
 KeyError: 'jdu_doc_number'
+2018-06-28 17:52:30 [land_info] WARNING: WARNING on https://sf.taobao.com/item_list.htm?spm=a213w.7398504.filter.46.rDN4gv&sorder=-1&auction_start_seg=0&auction_start_from=2018-05-16&auction_start_to=2018-06-23
+2018-06-28 17:52:30 [land_info] ERROR: info on https://sf.taobao.com/item_list.htm?spm=a213w.7398504.filter.46.rDN4gv&sorder=-1&auction_start_seg=0&auction_start_from=2018-05-16&auction_start_to=2018-06-23
+2018-06-28 17:52:33 [py.warnings] WARNING: /home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/pymysql/cursors.py:166: Warning: (1265, "Data truncated for column 'img_url' at row 1")
+  result = self._query(query)
+
+2018-06-28 17:53:13 [land_info] WARNING: WARNING on https://sf.taobao.com/item_list.htm?spm=a213w.7398504.filter.46.rDN4gv&sorder=-1&auction_start_seg=0&auction_start_from=2018-05-16&auction_start_to=2018-06-23
+2018-06-28 17:53:13 [land_info] ERROR: info on https://sf.taobao.com/item_list.htm?spm=a213w.7398504.filter.46.rDN4gv&sorder=-1&auction_start_seg=0&auction_start_from=2018-05-16&auction_start_to=2018-06-23
+2018-06-28 17:53:17 [py.warnings] WARNING: /home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/pymysql/cursors.py:166: Warning: (1265, "Data truncated for column 'img_url' at row 1")
+  result = self._query(query)
+
+2018-06-28 17:53:56 [land_info] WARNING: WARNING on https://sf.taobao.com/item_list.htm?spm=a213w.7398504.filter.46.rDN4gv&sorder=-1&auction_start_seg=0&auction_start_from=2018-05-16&auction_start_to=2018-06-23
+2018-06-28 17:53:56 [land_info] ERROR: info on https://sf.taobao.com/item_list.htm?spm=a213w.7398504.filter.46.rDN4gv&sorder=-1&auction_start_seg=0&auction_start_from=2018-05-16&auction_start_to=2018-06-23
+2018-06-28 17:53:59 [py.warnings] WARNING: /home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/pymysql/cursors.py:166: Warning: (1265, "Data truncated for column 'img_url' at row 1")
+  result = self._query(query)
+

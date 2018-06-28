@@ -12,11 +12,11 @@ import scrapy
 from PAIMAI.items import PaimaiItem
 from lxml import etree
 
-from model import get_detail_desc
-from model import get_house_area
-from model import get_house_cardnum
-from model import get_latlng
-from model import parse_table, get_rep_url
+from coordinate import get_latlng
+from deal_aution_info import parse_table, get_rep_url
+from deal_detail_desc_is_short import get_detail_desc
+from deal_house_area import get_house_area
+from deal_house_property_cardnum import get_house_cardnum
 
 logger = logging.getLogger("land_info")
 
@@ -100,8 +100,9 @@ class SipaiSpider(scrapy.Spider):
                     item["itemUrl"] ="https:" +  detail_url
                     # item["item_id"] = str(list.get("id"))
 
-                    item["dealPrice"] = str(list.get("currentPrice"))#成交价格
-                    item["evaluatePrice"] = str(list.get("consultPrice"))#评估价
+                    item["dealPrice"] = str(list.get("currentPrice")*1000)#成交价格,单位为厘
+                    # print(item["dealPrice"])
+                    item["evaluatePrice"] = str(list.get("consultPrice")*1000)#评估价，单位为厘
                     item["viewerCount"] = str(list.get("viewerCount"))
                     item["bidCount"] = str(list.get("bidCount"))
                     item["delay_count"] = str(list.get("delayCount"))
@@ -178,62 +179,17 @@ class SipaiSpider(scrapy.Spider):
             item["bid_status"] = '05'
         else:
             item["bid_status"] = None
-        # print(item["bid_status"])
-
-        # item_title = title.split("【")[-1].split("】")[-1]
-        # 去掉＇（破）＇关键字
-        # if item_title.startswith("（"):
-        #     item["title"] = item_title.split("）")[1]
-        # else:
-        #     item["title"] = item_title
-
-
-        # print(item["item_id"])
-        # print(self.item["title"])
-        # div_list1 = response.xpath("//div[@class='pm-main-l auction-interaction']//ul/li")
-
-        # 成交时间
-        # self.item["deal_time"] = div.xpath(".//span[2]/text()")[0]
-        # item["deal_time"]= div_list1.xpath(".//span[@class='countdown J_TimeLeft']/text()").extract_first() if len(div_list1)>0 else None
-        # print(item["deal_time"])
-
-
-        # 交易状态
-        # print(self.item["deal_time"])
-        # status_text = div_list1.xpath(".//span[@class='title']/text()").extract_first()
-        # # print(status_text)
-        #
-        # if status_text:
-        #     # print(status_text)
-        #     if status_text == "成交价":
-        #         item["deal_status"] = "01"
-        #     else:
-        #         item["deal_status"] = "02"
-        # else:
-        #     status_text = response.xpath("//div[@class='pm-main-l auction-interaction']//h1/text()").extract()
-        #
-        #     if status_text:
-        #         status_text_temp = ''.join(status_text).strip()
-        #         # print(status_text_temp)
-        #         if (status_text_temp == "本场拍卖已以物抵债 ！"):
-        #             item["deal_status"] = "01"
-        #     else:
-        #         item["deal_status"] = "02"
-        # print(item["deal_status"])
-        # 成交价格
-        # deal_price = div_list1.xpath(".//span[@class='pm-current-price J_Price']/em/text()").extract_first()
-        # item["dealPrice"] = deal_price if deal_price is not None else None
-        # print(deal_price)
-
 
         # 起拍价格
         start_price = response.xpath("//div[@class='pm-main-l auction-interaction']//span[@class='J_Price']/text()").extract_first()
         # print(start_price)
-        item["start_price"] = start_price if start_price is not None else None
+        if start_price:
+            item["start_price"] = str(float(start_price.replace(',', ''))*1000) #1,120,000
+        else:
+            item["start_price"] = None
 
         # # 延迟次数
-        # deal_time = div_list1.xpath(".//span[3]/em/text()").extract_first()
-        # item["delay_count"] = deal_time if deal_time is not None else None
+
         div_list = response.xpath("//div[@class='subscribe']//span[@class='unit-txt']")
         # 法院
         court = div_list.xpath(".//a/text()").extract_first()
@@ -262,26 +218,7 @@ class SipaiSpider(scrapy.Spider):
         # 提醒人数
         remind_count = div_list2.xpath(".//span[@class='pm-reminder i-b']/em/text()").extract_first()
         item["remind_count"] =remind_count if remind_count is not None else None
-        # print(item["remind_count"])
-        # print('*' * 200)
-        # 报名人数
-        # applycount = div_list2.xpath(".//span[@class='pm-apply i-b']/em/text()").extract_first()
-        # item["applyCount"] = applycount if applycount is not None else None
-        # print(item["applyCount"])
-        # print('*' * 200)
-        # print(self.item["applyCount"])
-        # 围观人数
-        # viewcount = div_list2.xpath(".//span[@class='pm-surround i-b']/em/text()").extract_first()
 
-        # item["viewerCount"] = viewcount if viewcount is not None else None
-
-        # print(item["viewerCount"])
-        # print('*' * 200)
-        # 评估价格,2017年１月份之后，取列表中的第四个数据
-        # evaluatprice = div_list2.xpath(".//span[@class='J_Price']/text()").extract()
-        # item["evaluatePrice"] = evaluatprice[3] if len(evaluatprice) > 3  else None
-        # print(item["evaluatePrice"])
-        # print('*' * 200)
         # 图片地址
         urllist = []
         url_list = response.xpath("//div[@class='pm-main-l']//img/@src").extract()
@@ -330,11 +267,7 @@ class SipaiSpider(scrapy.Spider):
             item["town"] = ls[2] if len(ls) >= 3 else None
             item["detailAdrress"] = response.xpath("//div[@class='detail-common-text']//div[@id='itemAddressDetail']/text()").extract_first().strip()
 
-        # 出价次数
-        # bid_count = response.xpath("//div[@class='module-sf']//span[@class='J_Record']/text()").extract_first()
-        # # print(bid_count)
-        # item["bidCount"] = bid_count.strip() if bid_count is not None else None
-        #
+
         # 标的物详情描述,正则匹配（异步加载）
         detail = response.xpath("//div[@class='detail-common-text clearfix']/@data-from").extract_first()
         # 获取json数据链接
@@ -383,7 +316,7 @@ class SipaiSpider(scrapy.Spider):
         detail_desc = res.xpath("//*/text()")
 
         # print(detail_desc)
-        print("=====" * 20)
+
         if detail_desc is not None:
             detail_desc_temp = ','.join(detail_desc).strip()
             item["detail_desc"] = re.sub('\s', '', detail_desc_temp).replace(',', '').replace('、', '')
@@ -398,9 +331,7 @@ class SipaiSpider(scrapy.Spider):
 
         item['house_card_num'] = get_house_cardnum(item["detail_desc"])
         item['total_house_area'],item['total_land_area'] = get_house_area(item["detail_desc"])
-        # print(self.item["detail_desc"])
-        #     print(item["detail_desc"])
-        # print(item)
+        print("=====" * 20)
         yield item
 
 

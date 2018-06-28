@@ -34,7 +34,7 @@ class PaimaiPipeline(object):
         # finally:
         self.cur.close()
         self.conn.close()
-        print(item)
+        # print(item)
         return item
 
     # def __init__(self):

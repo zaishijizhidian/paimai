@@ -89,13 +89,13 @@ def parse_table(url):
 
 def clean_data(str):
     strs = str.replace('所有','').replace('权','').replace('共有','').replace('单独','').replace('共同','').replace('。','').replace('被执行','').replace('（','').replace('）','')
-    if "人" in str:
-        if ":" in str :
-            st = str.split(':')[-1]
-        elif "：" in str :
-            st = str.split('：')[-1]
+    if "人" in strs:
+        if ":" in strs :
+            st = strs.split(':')[-1]
+        elif "：" in strs :
+            st = strs.split('：')[-1]
         else:
-            st = str.replace('人','')
+            st = strs.replace('人','')
         return st
 
     else:
