@@ -5,18 +5,18 @@ import re
 import time
 import uuid
 from copy import deepcopy
+from datetime import date
 
 import requests
 import scrapy
-from datetime import date
+from PAIMAI.items import PaimaiItem
 from lxml import etree
 
-from PAIMAI.items import PaimaiItem
-from model.coordinate import get_latlng
-from model.deal_aution_info import parse_table, get_rep_url
-from model.deal_detail_desc_is_short import get_detail_desc
-from model.deal_house_area import get_house_area
-from model.deal_house_property_cardnum import get_house_cardnum
+from model import get_detail_desc
+from model import get_house_area
+from model import get_house_cardnum
+from model import get_latlng
+from model import parse_table, get_rep_url
 
 logger = logging.getLogger("land_info")
 

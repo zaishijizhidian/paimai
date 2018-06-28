@@ -13,8 +13,6 @@ from retrying import retry
 
 from model import config
 
-
-
 ENV = os.getenv("ENV","LOC")
 
 logger = logging.getLogger("rabbitmq")
