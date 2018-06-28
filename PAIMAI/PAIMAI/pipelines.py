@@ -1,22 +1,14 @@
 # -*- coding: utf-8 -*-
 
-import json
-import logging
 from datetime import datetime
-
-from bson import json_util
-import pymongo
-
-from PAIMAI.common import *
-
-from PAIMAI import settings
-
 
 table_name = 'increment_data'
 import pymysql
 main_fields = ['item_id','bid_id', 'title','bid_status', 'applyCount', 'viewerCount', 'bidCount','itemUrl','dealPrice',
               'evaluatePrice','deal_time', 'deal_status','start_price','delay_count','court','contact',
-               'phone_num', 'limit_status','remind_count','img_url', 'data_from','coordinate','province', 'city', 'town','detailAdrress','detail_desc']
+               'phone_num', 'limit_status','remind_count','img_url', 'data_from','coordinate','latitude','longtitude','confidence','province', 'city',
+               'town','detailAdrress','detail_desc','house_type','house_card_num','house_useage_detail',
+               'create_time','edit_time','total_house_area','total_land_area','auction_people','jdu_doc_number','legal_remark','report_url']
 
 class PaimaiPipeline(object):
 
@@ -42,7 +34,7 @@ class PaimaiPipeline(object):
         # finally:
         self.cur.close()
         self.conn.close()
-        # print(item)
+        print(item)
         return item
 
     # def __init__(self):
