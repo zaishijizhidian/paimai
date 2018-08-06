@@ -44,4 +44,27 @@ class PaimaiItem(scrapy.Item):
      detail_desc = scrapy.Field()
      detail_url = scrapy.Field()
      crawled_time = scrapy.Field()
+
+
+     create_time = scrapy.Field()
+
+
+     edit_time = scrapy.Field()
+
+
      spider = scrapy.Field()
+
+
+     house_card_num = scrapy.Field()
+
+     total_house_area = scrapy.Field()
+     total_land_area = scrapy.Field()
+     report_url = scrapy.Field()
+
+     house_type = scrapy.Field()
+
+
+     auction_people = scrapy.Field()
+     jdu_doc_number = scrapy.Field()
+     legal_remark = scrapy.Field()
+     house_useage_detail = scrapy.Field()

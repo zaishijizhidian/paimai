@@ -13,7 +13,7 @@ from lxml import etree
 
 from PAIMAI.items import PaimaiItem
 from model.coordinate import get_latlng
-from model.deal_aution_info import parse_table, get_rep_url
+from model.deal_taobao_aution_info import parse_table, get_rep_url
 from model.deal_detail_desc_is_short import get_detail_desc
 from model.deal_house_area import get_house_area
 from model.deal_house_property_cardnum import get_house_cardnum
@@ -24,8 +24,8 @@ class SipaiSpider(scrapy.Spider):
     name = "bid_over"
     # redis_key = 'SipaiSpider:start_urls'
     allowed_domains = ['sf.taobao.com']
-    #所有类别的起始网址(更新日期2018-05-16至2018-06-22)
-    start_urls = ['https://sf.taobao.com/item_list.htm?spm=a213w.7398504.filter.46.rDN4gv&sorder=-1&auction_start_seg=0&auction_start_from=2018-05-16&auction_start_to=2018-06-23']
+    #所有类别的起始网址(更新日期2018-06-28至2018-07-09)
+    start_urls = ['https://sf.taobao.com/item_list.htm?spm=a213w.7398504.filter.13.WLOSmj&auction_start_seg=0&auction_start_from=2018-06-28&auction_start_to=2018-07-09']
 
     def parse(self, response):
         #添加日志信息
@@ -167,7 +167,7 @@ class SipaiSpider(scrapy.Spider):
         start_price = response.xpath("//div[@class='pm-main-l auction-interaction']//span[@class='J_Price']/text()").extract_first()
         # print(start_price)
         if start_price:
-            item["start_price"] = str(int(start_price.replace(',', ''))*1000) #1,120,000
+            item["start_price"] = str(float(start_price.replace(',', ''))*1000) #1,120,000
         else:
             item["start_price"] = None
 
@@ -272,6 +272,10 @@ class SipaiSpider(scrapy.Spider):
             elif '工业' in item["house_useage_detail"]:
                 item['house_type'] = '06'
             elif '住宅' in item["house_useage_detail"]:
+                item['house_type'] = '01'
+            elif '居住' in item["house_useage_detail"]:
+                item['house_type'] = '01'
+            elif '别墅' in item["house_useage_detail"]:
                 item['house_type'] = '01'
             elif '办公' in item["house_useage_detail"]:
                 item['house_type'] = '02'

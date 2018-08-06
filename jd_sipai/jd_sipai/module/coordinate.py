@@ -31,16 +31,16 @@ def get_latlng(addr):
         # print(coordinate)
         confidence=json_result['result']['confidence']
         #经度坐标,进度的坐标要比维度的大
-        lng = coordinate["lng"]
+        lng = str(coordinate["lng"])
         # 纬度坐标，较小的那个坐标
-        lat = coordinate["lat"]
+        lat = str(coordinate["lat"])
 
 
 
     else:
 
-        confidence = None
-        lng = None
-        lat = None
+        confidence = ''
+        lng = ''
+        lat = ''
 
     return confidence,lat,lng

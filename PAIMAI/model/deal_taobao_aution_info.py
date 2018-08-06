@@ -1,7 +1,9 @@
 import re
-from lxml import etree
-import requests
+
 import pandas as pd
+
+import requests
+
 from retrying import retry
 import json
 
@@ -33,7 +35,7 @@ def parse_table(url):
             for i in range(len(df)):
                 col = df.iloc[i,0]
                 # print(df.iloc[i,0])
-                if col == '拍品所有人' or col =='房屋所有权人'or col == '标的所有人' or col == '土地使用权人':
+                if col == '拍品所有人' or col =='房屋所有权人'or col == '标的所有人' or col == '土地使用权人' or col == '标的物所有权人':
                     bd= df.iloc[i,1]
                     if bd:
                         item["auction_people"] = clean_data(bd)
@@ -101,7 +103,6 @@ def clean_data(str):
     else:
         return strs
 
-
 @retry(stop_max_attempt_number=3)
 def get_rep_url(url):
     res = requests.get(url, timeout=3)
@@ -127,17 +128,38 @@ def get_rep_url(url):
 
         return str(list1)
 
-if __name__ == '__main__':
-    url = 'https://sf.taobao.com/sf_item/570036380942.htm'
-    data_url = 'https://desc.alicdn.com/i1/560/500/567506029769/TB1QbVylASWBuNjSszd8qveSpla.desc%7Cvar%5Edesc%3Bsign%5Eb8a0e3e883cc992cc3b3572a2200e02a%3Blang%5Egbk%3Bt%5E1523515930'
-    # res = requests.get(url)
-    # # print(11)
-    # response = etree.HTML(res.text)
-    # detail = response.xpath("//div[@class='detail-common-text clearfix']/@data-from")[0]
-    # # print(detail)
-    # # 获取json数据链接
-    # detail_url = 'https:' + detail
 
-    # it = parse_table(detail_url)
-    it = parse_table(data_url)
-    print(it)
+
+
+    # data_pattern = re.compile('null\((.*?)\);', re.S)
+    # result = re.search(data_pattern, data)
+    # if result:
+    #     json_list = result.group(1)
+    #     js = json.loads(json_list)
+    #     # print(type(js))
+    #     if not js:
+    #         return ''
+    #     list1 = []
+    #     for data in js:
+    #         id = data["id"]
+    #         # print(id)
+    #         rep_url = "https://sf.taobao.com/download_attach.do?attach_id=" + id
+    #         list1.append(rep_url)
+    #
+    #     return str(list1)
+
+# if __name__ == '__main__':
+#     url = 'https://paimai.jd.com/json/paimaiProduct/queryProductFiles?productId=106345263'
+#     get_rep_url(url)
+#     data_url = 'https://desc.alicdn.com/i1/560/500/567506029769/TB1QbVylASWBuNjSszd8qveSpla.desc%7Cvar%5Edesc%3Bsign%5Eb8a0e3e883cc992cc3b3572a2200e02a%3Blang%5Egbk%3Bt%5E1523515930'
+#     # res = requests.get(url)
+#     # # print(11)
+#     # response = etree.HTML(res.text)
+#     # detail = response.xpath("//div[@class='detail-common-text clearfix']/@data-from")[0]
+#     # # print(detail)
+#     # # 获取json数据链接
+#     # detail_url = 'https:' + detail
+#
+#     # it = parse_table(detail_url)
+#     it = parse_table(data_url)
+#     print(it)

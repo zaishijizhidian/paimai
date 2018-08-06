@@ -8,6 +8,7 @@
 #     http://doc.scrapy.org/en/latest/topics/settings.html
 #     http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
+import datetime
 
 BOT_NAME = 'jd_sipai'
 
@@ -15,16 +16,16 @@ SPIDER_MODULES = ['jd_sipai.spiders']
 NEWSPIDER_MODULE = 'jd_sipai.spiders'
 
 #指定去重队列
-SCHEDULER = 'scrapy_redis.scheduler.Scheduler'
+# SCHEDULER = 'scrapy_redis.scheduler.Scheduler'
 #持久化去重
-SCHEDULER_PERSIST = True
+# SCHEDULER_PERSIST = True
 #指定去重方法给request对象去重
-DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
+# DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
 
 # SCHEDULER_QUEUE_CLASS = 'scrapy_redis.queue.SpiderPriorityQueue'
 ITEM_PIPELINES = {
    'jd_sipai.pipelines.JdSipaiPipeline': 300,
-    'scrapy_redis.pipelines.RedisPipeline':400,
+    # 'scrapy_redis.pipelines.RedisPipeline':400,
 }
 
 ROBOTSTXT_OBEY = False
@@ -32,7 +33,10 @@ REDIS_URL = "reids://127.0.0.1:6379"
 
 USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36'
 
-LOG_FILE = './jd_sipai.log'
+
+startDate = datetime.datetime.now().strftime('%Y%m%d')
+# LOG_FILE=f"mySpiderlog{startDate}.txt"
+LOG_FILE = './jd_sipai{}.txt'.format(startDate)
 LOG_LEVEL = "WARNING"
 
 #设置自动限速，防止爬去过快出现数据的遗漏

@@ -95,18 +95,21 @@ def get_addr():
                 print("**" * 50)
 
 # 多线程，为了提高效率
-def multi():
-    pool = ThreadPool(processes=8)
-    pool.apply_async(get_addr, ())
-    pool.close()
-    pool.join()
+# def multi():
+#     pool = ThreadPool(processes=8)
+#     pool.apply_async(get_addr, ())
+#     pool.close()
+#     pool.join()
 
 
 
 if __name__ == '__main__':
     starttime = datetime.datetime.now()
-    multi()
-    # get_addr()
+    # multi()
+    address = input()
+    cof,lat,lng =  get_latlng(address)
+    print(cof,lat,lng)
+
     endtime = datetime.datetime.now()
     time = (endtime - starttime).seconds
     print("共耗时%s秒" % (time))

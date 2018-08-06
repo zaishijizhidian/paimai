@@ -31,7 +31,8 @@ def get_house_cardnum(str_text):
         else:
             item["land_crefid"]= None
         # if item["house_crefid"] or item["land_crefid"] :
-        return str(item)
+        js_data = json.dumps(item,ensure_ascii=False)
+        return js_data
 
     else:
         return None

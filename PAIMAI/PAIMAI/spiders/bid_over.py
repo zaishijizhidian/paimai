@@ -5,18 +5,19 @@ import re
 import time
 import uuid
 from copy import deepcopy
-from datetime import date
+from datetime import date, timedelta
 
 import requests
 import scrapy
 from PAIMAI.items import PaimaiItem
 from lxml import etree
 
-from coordinate import get_latlng
-from deal_aution_info import parse_table, get_rep_url
-from deal_detail_desc_is_short import get_detail_desc
-from deal_house_area import get_house_area
-from deal_house_property_cardnum import get_house_cardnum
+from model.coordinate  import get_latlng
+from model.deal_taobao_aution_info import parse_table, get_rep_url
+from model.deal_detail_desc_is_short import get_detail_desc
+from model.deal_house_area import get_house_area
+from model.deal_house_property_cardnum import get_house_cardnum
+from model.modify_house_type import modify_type
 
 logger = logging.getLogger("land_info")
 
@@ -25,7 +26,13 @@ class SipaiSpider(scrapy.Spider):
     # redis_key = 'SipaiSpider:start_urls'
     allowed_domains = ['sf.taobao.com']
     #所有类别的起始网址(更新日期2018-05-16至2018-06-22)
-    start_urls = ['https://sf.taobao.com/item_list.htm?spm=a213w.7398504.filter.46.rDN4gv&sorder=-1&auction_start_seg=0&auction_start_from=2018-05-16&auction_start_to=2018-06-23']
+
+    # today = date.today()
+    today = '2018-08-05'
+    # yes = today - timedelta(days=1)
+    yes = '2018-08-03'
+    start_url = 'https://sf.taobao.com/item_list.htm?spm=a213w.7398504.filter.46.rDN4gv&sorder=-1&auction_start_seg=0&auction_start_from={}&auction_start_to={}'.format(yes,today)
+    start_urls = [start_url]
 
     def parse(self, response):
         #添加日志信息
@@ -95,11 +102,9 @@ class SipaiSpider(scrapy.Spider):
 
                 #在列表页获取部分json 信息
                 for list in data_list:
-
                     detail_url = list.get("itemUrl")
                     item["itemUrl"] ="https:" +  detail_url
                     # item["item_id"] = str(list.get("id"))
-
                     item["dealPrice"] = str(list.get("currentPrice")*1000)#成交价格,单位为厘
                     # print(item["dealPrice"])
                     item["evaluatePrice"] = str(list.get("consultPrice")*1000)#评估价，单位为厘
@@ -141,17 +146,15 @@ class SipaiSpider(scrapy.Spider):
                     yield scrapy.Request(
                         item["itemUrl"],callback=self.parse_detail_url,meta={"item":deepcopy(item)}
                     )
-
         # 获取下一页的url列表
         next_page_url = response.xpath("//div[@class='pagination J_Pagination']/a[@class='next']/@href").extract_first()
-        # page_num = response.xpath("//div[@class='pagination J_Pagination']//em[@class='page-total']/text()").extract_first()
-        if next_page_url is not  None:
+        #page_num = response.xpath("//div[@class='pagination J_Pagination']//em[@class='page-total']/text()").extract_first()
+        if next_page_url is not None:
             next_url = "https:" + next_page_url.strip()
             yield scrapy.Request(
                 next_url,
                 callback=self.get_detail_url
             )
-
 
     def parse_detail_url(self, response):
         item = response.meta["item"]
@@ -293,7 +296,7 @@ class SipaiSpider(scrapy.Spider):
         data_url = 'https://sf.taobao.com/json/get_gov_attach.htm?id=' + item['item_id']
         item['report_url'] = get_rep_url(data_url)
         if item["house_useage_detail"]:
-            if '商业' in item["house_useage_detail"]:
+            if '商业' in item["house_useage_detail"] or '商服' in item["house_useage_detail"]:
                 item['house_type'] = '03'
             elif '工业' in item["house_useage_detail"]:
                 item['house_type'] = '06'
@@ -304,9 +307,9 @@ class SipaiSpider(scrapy.Spider):
             elif '车库' in item["house_useage_detail"] or '停车场'in item["house_useage_detail"]:
                 item['house_type'] = '04'
             else:
-                item['house_type'] = None
+                item['house_type'] = modify_type(item["title"])
         else:
-            item['house_type'] = None
+            item['house_type'] = modify_type(item["title"])
 
 
         res = requests.get(detail_url)

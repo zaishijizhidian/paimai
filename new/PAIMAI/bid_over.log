@@ -24875,3 +24875,236 @@ Traceback (most recent call last):
   File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/item.py", line 59, in __getitem__
     return self._values[key]
 KeyError: 'jdu_doc_number'
+2018-06-28 17:33:14 [land_info] WARNING: WARNING on https://sf.taobao.com/item_list.htm?spm=a213w.7398504.filter.46.rDN4gv&sorder=-1&auction_start_seg=0&auction_start_from=2018-05-16&auction_start_to=2018-06-23
+2018-06-28 17:33:14 [land_info] ERROR: info on https://sf.taobao.com/item_list.htm?spm=a213w.7398504.filter.46.rDN4gv&sorder=-1&auction_start_seg=0&auction_start_from=2018-05-16&auction_start_to=2018-06-23
+2018-06-28 17:33:17 [py.warnings] WARNING: /home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/pymysql/cursors.py:166: Warning: (1265, "Data truncated for column 'img_url' at row 1")
+  result = self._query(query)
+
+2018-06-28 17:33:17 [py.warnings] WARNING: /home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/pymysql/cursors.py:166: Warning: (1265, "Data truncated for column 'report_url' at row 1")
+  result = self._query(query)
+
+2018-06-28 17:33:27 [scrapy.core.scraper] ERROR: Spider error processing <GET https://sf.taobao.com/sf_item/569568492504.htm> (referer: https://sf.taobao.com/item_list.htm?location_code=371522&city=&province=&auction_start_seg=0&auction_start_from=2018-05-16&auction_start_to=2018-06-23)
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/referer.py", line 339, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/python/workspace/spider/11/11/new/PAIMAI/PAIMAI/spiders/bid_over.py", line 170, in parse_detail_url
+    item["start_price"] = str(int(start_price.replace(',', ''))*1000) #1,120,000
+ValueError: invalid literal for int() with base 10: '465239.7 '
+2018-06-28 17:35:49 [scrapy.core.scraper] ERROR: Spider error processing <GET https://sf.taobao.com/sf_item/569314709760.htm> (referer: https://sf.taobao.com/list/0_____%B9%F3%D1%F4.htm?auction_start_seg=0&auction_start_from=2018-05-16&auction_start_to=2018-06-23&page=10)
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/referer.py", line 339, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/python/workspace/spider/11/11/new/PAIMAI/PAIMAI/spiders/bid_over.py", line 170, in parse_detail_url
+    item["start_price"] = str(int(start_price.replace(',', ''))*1000) #1,120,000
+ValueError: invalid literal for int() with base 10: '4645960.2 '
+2018-06-28 17:35:52 [scrapy.core.scraper] ERROR: Spider error processing <GET https://sf.taobao.com/sf_item/568650161541.htm> (referer: https://sf.taobao.com/list/0_____%B9%F3%D1%F4.htm?auction_start_seg=0&auction_start_from=2018-05-16&auction_start_to=2018-06-23&page=10)
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/referer.py", line 339, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/python/workspace/spider/11/11/new/PAIMAI/PAIMAI/spiders/bid_over.py", line 170, in parse_detail_url
+    item["start_price"] = str(int(start_price.replace(',', ''))*1000) #1,120,000
+ValueError: invalid literal for int() with base 10: '380796.3 '
+2018-06-28 17:35:56 [scrapy.core.scraper] ERROR: Spider error processing <GET https://sf.taobao.com/sf_item/569052514633.htm> (referer: https://sf.taobao.com/list/0_____%B9%F3%D1%F4.htm?auction_start_seg=0&auction_start_from=2018-05-16&auction_start_to=2018-06-23&page=10)
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/referer.py", line 339, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/python/workspace/spider/11/11/new/PAIMAI/PAIMAI/spiders/bid_over.py", line 170, in parse_detail_url
+    item["start_price"] = str(int(start_price.replace(',', ''))*1000) #1,120,000
+ValueError: invalid literal for int() with base 10: '127956.5 '
+2018-06-28 17:35:58 [scrapy.core.scraper] ERROR: Spider error processing <GET https://sf.taobao.com/sf_item/569128722772.htm> (referer: https://sf.taobao.com/list/0_____%B9%F3%D1%F4.htm?auction_start_seg=0&auction_start_from=2018-05-16&auction_start_to=2018-06-23&page=10)
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/referer.py", line 339, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/python/workspace/spider/11/11/new/PAIMAI/PAIMAI/spiders/bid_over.py", line 170, in parse_detail_url
+    item["start_price"] = str(int(start_price.replace(',', ''))*1000) #1,120,000
+ValueError: invalid literal for int() with base 10: '26219.2 '
+2018-06-28 17:35:58 [scrapy.core.scraper] ERROR: Spider error processing <GET https://sf.taobao.com/sf_item/569119926280.htm> (referer: https://sf.taobao.com/list/0_____%B9%F3%D1%F4.htm?auction_start_seg=0&auction_start_from=2018-05-16&auction_start_to=2018-06-23&page=10)
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/referer.py", line 339, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/python/workspace/spider/11/11/new/PAIMAI/PAIMAI/spiders/bid_over.py", line 170, in parse_detail_url
+    item["start_price"] = str(int(start_price.replace(',', ''))*1000) #1,120,000
+ValueError: invalid literal for int() with base 10: '747.6 '
+2018-06-28 17:36:17 [scrapy.core.scraper] ERROR: Spider error processing <GET https://sf.taobao.com/sf_item/570509303774.htm> (referer: https://sf.taobao.com/list/0_____%B9%F3%D1%F4.htm?auction_start_seg=0&auction_start_from=2018-05-16&auction_start_to=2018-06-23&page=12)
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/referer.py", line 339, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/python/workspace/spider/11/11/new/PAIMAI/PAIMAI/spiders/bid_over.py", line 170, in parse_detail_url
+    item["start_price"] = str(int(start_price.replace(',', ''))*1000) #1,120,000
+ValueError: invalid literal for int() with base 10: '66374.7 '
+2018-06-28 17:36:19 [scrapy.core.scraper] ERROR: Spider error processing <GET https://sf.taobao.com/sf_item/570505015966.htm> (referer: https://sf.taobao.com/list/0_____%B9%F3%D1%F4.htm?auction_start_seg=0&auction_start_from=2018-05-16&auction_start_to=2018-06-23&page=12)
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/referer.py", line 339, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/python/workspace/spider/11/11/new/PAIMAI/PAIMAI/spiders/bid_over.py", line 170, in parse_detail_url
+    item["start_price"] = str(int(start_price.replace(',', ''))*1000) #1,120,000
+ValueError: invalid literal for int() with base 10: '1510951.5 '
+2018-06-28 17:36:19 [scrapy.core.scraper] ERROR: Spider error processing <GET https://sf.taobao.com/sf_item/570318617627.htm> (referer: https://sf.taobao.com/list/0_____%B9%F3%D1%F4.htm?auction_start_seg=0&auction_start_from=2018-05-16&auction_start_to=2018-06-23&page=12)
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/referer.py", line 339, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/python/workspace/spider/11/11/new/PAIMAI/PAIMAI/spiders/bid_over.py", line 170, in parse_detail_url
+    item["start_price"] = str(int(start_price.replace(',', ''))*1000) #1,120,000
+ValueError: invalid literal for int() with base 10: '24012508.5 '
+2018-06-28 17:36:27 [scrapy.core.scraper] ERROR: Spider error processing <GET https://sf.taobao.com/sf_item/570246096650.htm> (referer: https://sf.taobao.com/list/0_____%B9%F3%D1%F4.htm?auction_start_seg=0&auction_start_from=2018-05-16&auction_start_to=2018-06-23&page=10)
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/referer.py", line 339, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/python/workspace/spider/11/11/new/PAIMAI/PAIMAI/spiders/bid_over.py", line 170, in parse_detail_url
+    item["start_price"] = str(int(start_price.replace(',', ''))*1000) #1,120,000
+ValueError: invalid literal for int() with base 10: '731068.8 '
+2018-06-28 17:36:32 [scrapy.core.scraper] ERROR: Spider error processing <GET https://sf.taobao.com/sf_item/567783621277.htm> (referer: https://sf.taobao.com/item_list.htm?location_code=371581&city=&province=&auction_start_seg=0&auction_start_from=2018-05-16&auction_start_to=2018-06-23)
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/referer.py", line 339, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/python/workspace/spider/11/11/new/PAIMAI/PAIMAI/spiders/bid_over.py", line 170, in parse_detail_url
+    item["start_price"] = str(int(start_price.replace(',', ''))*1000) #1,120,000
+ValueError: invalid literal for int() with base 10: '13283220.68 '
+2018-06-28 17:36:41 [scrapy.core.scraper] ERROR: Spider error processing <GET https://sf.taobao.com/sf_item/569965155478.htm> (referer: https://sf.taobao.com/item_list.htm?location_code=371581&city=&province=&auction_start_seg=0&auction_start_from=2018-05-16&auction_start_to=2018-06-23)
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/referer.py", line 339, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/python/workspace/spider/11/11/new/PAIMAI/PAIMAI/spiders/bid_over.py", line 170, in parse_detail_url
+    item["start_price"] = str(int(start_price.replace(',', ''))*1000) #1,120,000
+ValueError: invalid literal for int() with base 10: '593078.5 '
+2018-06-28 17:36:44 [scrapy.core.scraper] ERROR: Spider error processing <GET https://sf.taobao.com/sf_item/569770805496.htm> (referer: https://sf.taobao.com/item_list.htm?location_code=371581&city=&province=&auction_start_seg=0&auction_start_from=2018-05-16&auction_start_to=2018-06-23)
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/referer.py", line 339, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/python/workspace/spider/11/11/new/PAIMAI/PAIMAI/spiders/bid_over.py", line 170, in parse_detail_url
+    item["start_price"] = str(int(start_price.replace(',', ''))*1000) #1,120,000
+ValueError: invalid literal for int() with base 10: '71012.24 '
+2018-06-28 17:37:30 [scrapy.core.scraper] ERROR: Spider error processing <GET https://sf.taobao.com/sf_item/569078935449.htm> (referer: https://sf.taobao.com/item_list.htm?location_code=511181&city=&province=&auction_start_seg=0&auction_start_from=2018-05-16&auction_start_to=2018-06-23)
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/referer.py", line 339, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/python/workspace/spider/11/11/new/PAIMAI/PAIMAI/spiders/bid_over.py", line 170, in parse_detail_url
+    item["start_price"] = str(int(start_price.replace(',', ''))*1000) #1,120,000
+ValueError: invalid literal for int() with base 10: '1643723.2 '
+2018-06-28 17:37:40 [scrapy.core.scraper] ERROR: Spider error processing <GET https://sf.taobao.com/sf_item/570560687299.htm> (referer: https://sf.taobao.com/item_list.htm?city=%B9%F3%D1%F4&province=&auction_start_seg=0&auction_start_from=2018-05-16&auction_start_to=2018-06-23)
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/referer.py", line 339, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/python/workspace/spider/11/11/new/PAIMAI/PAIMAI/spiders/bid_over.py", line 170, in parse_detail_url
+    item["start_price"] = str(int(start_price.replace(',', ''))*1000) #1,120,000
+ValueError: invalid literal for int() with base 10: '436135.5 '

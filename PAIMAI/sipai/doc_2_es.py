@@ -10,54 +10,42 @@ import pymysql
 def conn():
     es = Elasticsearch("http://elastic:Spiderman2018@es-cn-mp90n4agq000mftri.public.elasticsearch.aliyuncs.com:9200/",
                        verify_certs=False, timeout=60)
-
-    db = pymysql.connect(  # host='localhost',
-        # host='192.168.11.251',
-        host='data.npacn.com',
-        port=3306,
-        user='youtong',
-        password='duc06LEQpgoP',
-        # password='youtong123',
-        # password='mysql',
-        database='spiderman',
-        # database='sipai_backup',
-        charset='utf8',
-        cursorclass=pymysql.cursors.DictCursor)
+    db = pymysql.connect(host='192.168.11.251', user='root', password='youtong123', db='spiderman', local_infile=1,
+                         charset='utf8')
 
     cursor = db.cursor()
     for n in range(701):
         m = n * 1000
-        sql = "select * from sm_document_copy limit {},1000".format(m)
+        sql = "select * from new_sm_document limit {},1000".format(m)
         cursor.execute(sql)
         data = cursor.fetchall()
 
         for dataInfo in data:
             # print(dataInfo)
             package = []
-            #在sm_document_copy中适用，格式是dict
+
             row = {
-                "id": dataInfo["id"],
-                "create_by": dataInfo["create_by"],
-                "create_date": dataInfo["create_date"],
-                "update_by": dataInfo["update_by"],
-                "update_date": dataInfo["update_date"],
-                "del_flag": dataInfo["del_flag"],
-                "obligors": dataInfo["obligors"],
-                "creditors": dataInfo["creditors"],
-                "court": dataInfo["court"],
-                "case_no": dataInfo["case_no"],
-                "doc_type": dataInfo["doc_type"],
-                "doc_content": dataInfo["doc_content"],
-                "doc_result": dataInfo["doc_result"],
+                    "id": dataInfo[0],
+                    "create_by": dataInfo[1],
+                    "create_date": dataInfo[2],
+                    "update_by": dataInfo[3],
+                    "update_date": dataInfo[4],
+                    "del_flag": dataInfo[6],
+                    "obligors": dataInfo[7],
+                    "creditors": dataInfo[8],
+                    "court": dataInfo[9],
+                    "case_no": dataInfo[10],
+                    "doc_type": dataInfo[11],
+                    "doc_content": dataInfo[12],
+                    "doc_result": dataInfo[13],
 
-                "doc_money": dataInfo["doc_money"],
-                "doc_assets": dataInfo["doc_assets"],
-                "doc_source": dataInfo["doc_source"],
+                    "doc_money": dataInfo[14],
+                    "doc_assets": dataInfo[15],
+                    "doc_source": dataInfo[16],
 
-                "doc_province": dataInfo["doc_province"],
-                "doc_city": dataInfo["doc_city"]
-
-            }
+                    "doc_province": dataInfo[17],
+                    "doc_city": dataInfo[18]
+                }
 
 
             package.append(row)
@@ -75,16 +63,16 @@ def conn():
             print("插入elasticsearch成功")
 
 # 多线程，为了提高效率
-def multi():
-    pool = ThreadPool(processes=8)
-    pool.apply_async(conn, ())
-    pool.close()
-    pool.join()
+# def multi():
+#     pool = ThreadPool(processes=8)
+#     pool.apply_async(conn, ())
+#     pool.close()
+#     pool.join()
 
 if __name__ == '__main__':
     starttime = datetime.now()
-    multi()
-    # conn()
+    # multi()
+    conn()
     endtime = datetime.now()
     time = (endtime - starttime).seconds
     print("共耗时%s秒" % (time))

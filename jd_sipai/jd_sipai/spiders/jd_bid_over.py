@@ -1,77 +1,75 @@
 # -*- coding: utf-8 -*-
-import json
-import re
-import uuid
-
-import requests
-import scrapy
-# from scrapy.log import logger
 import logging
-
-from copy import deepcopy
-
-from datetime import date
 import time
-from scrapy_redis.spiders import RedisSpider
-from scrapy.dupefilters import RFPDupeFilter
-from coordinate import get_latlng
+import uuid
+from copy import deepcopy
+from datetime import date
+
+import scrapy
+
+from get_data_id import *
+from jd_sipai.module.coordinate import get_latlng
+from jd_sipai.module.deal_house_area import get_house_area
+from jd_sipai.module.deal_house_property_cardnum import get_house_cardnum
+from jd_sipai.module.deal_jd_aution_info import parse_table, get_rep_url
+from model.modify_house_type import modify_type
 
 logger = logging.getLogger("jd_info")
 
 from jd_sipai.items import JdSipaiItem
-# class JdBidSpider(scrapy.Spider):
-class JdBidSpider(RedisSpider):
+class JdBidSpider(scrapy.Spider):
+# class JdBidSpider(RedisSpider):
     name = 'jd_bid_over'
     allowed_domains = ['jd.com','auction.jd.com']
-    redis_key = 'JdBidSpider:start_urls'
-    # start_urls = ['https://auction.jd.com/getJudicatureList.html?callback=jQuery5223987&page=1&limit=40&_=1526613080129']
-    # start_urls = ['https://auction.jd.com/sifa_list.html']
-
+    start_urls = iter(get_item_url())
+    # def __int__(self):
+    #     # redis_key = 'JdBidSpider:start_urls'
+    #     # start_urls = ['https://auction.jd.com/getJudicatureList.html?callback=jQuery5223987&page=1&limit=40&_=1526613080129']
+    #     for item_url in start_urls:
+    #         yield scrapy.Request(
+    #             item_url,
+    #             callback=self.parse_item
+    #         )
     def parse(self, response):
         # 添加日志信息
         logger.info('info on %s', response.url)
         logger.warning('WARNING on %s', response.url)
         logger.debug('info on %s', response.url)
         logger.error('info on %s', response.url)
-
         item = JdSipaiItem()
-        # item = {}
-
         pattern = re.search(r'"ls":(.*?),"total"',response.body.decode())
-        # print(pattern)
-        # if pattern:
         json_content = json.loads(pattern.group(1))
         pattern_list = list(json_content)
         for content in pattern_list:
             item["item_id"] = str(content["id"])
             # print("*****",item["item_id"])
             item["itemUrl"] = "https://paimai.jd.com/" + item["item_id"]
-            item["dealPrice"] = content["currentPriceStr"]
-            deal_time = content["endTime"]
-            timeArray = time.localtime(deal_time/1000)  # 将毫秒转化为当前时间格式
-            item["deal_time"] = time.strftime("%Y-%m-%d %H:%M:%S", timeArray)
+            item["dealPrice"] = str(content["currentPrice"]*1000)
+            item["evaluatePrice"] = str(content["assessmentPrice"]*1000)
+            start_time = content["startTime"]
+            end_time = content["endTime"]
+            startimeArray = time.localtime(start_time/1000)  # 将毫秒转化为当前时间格式
+            endtimeArray = time.localtime(end_time/1000)  # 将毫秒转化为当前时间格式
+            item["start_time"] = time.strftime("%Y-%m-%d %H:%M:%S", startimeArray)
+            item["end_time"] = time.strftime("%Y-%m-%d %H:%M:%S", endtimeArray)
+            item["title"] = content["title"]
+            if item["title"]:
+                confidence, lat, lng = get_latlng(item["title"])
+                item["confidence"] = confidence
+                item["longtitude"] = lng
+                item["latitude"] = lat
+                if lng:
+                    item["coordinate"] = lng + ',' + lat
+                else:
+                    item["coordinate"] = ''
+                # 生成唯一标识的uuid信息
+                u = uuid.uuid5(uuid.NAMESPACE_OID, item["title"])
+                # 生成12位的整数数字
+                item["bid_id"] = str(u.time_low)
             yield scrapy.Request(
                 item["itemUrl"],
                 callback=self.parse_detail_url,
                 meta={"item":deepcopy(item)}
-            )
-
-        #下一页
-
-        next_url_list_temp = "https://auction.jd.com/getJudicatureList.html?callback=jQuery5223987&page={}&limit=40&_=1526613080129"
-        pattern1 = re.search(r'"total":(.*?)}', response.body.decode())
-        # print(pattern1)
-        total_num = json.loads(pattern1.group(1))
-        page_num = total_num//40 + (total_num%40 + 39)//40
-        # page_num = 3
-        item = {}
-        for i in range(2, page_num + 1):
-            item["page_url"] = next_url_list_temp.format(i)
-            # print(item["page_url"])
-
-            yield scrapy.Request(
-                item["page_url"],
-                callback=self.parse
             )
 
 
@@ -94,18 +92,7 @@ class JdBidSpider(RedisSpider):
         elif title_status == '变卖':
             item["bid_status"] = '05'
         # print(item["bid_status"])
-        item["title"] = title.split("【")[-1].split("】")[-1].strip() if title else None
-        if item["title"]:
-            confidence, lat, lng = get_latlng(item["title"])
-            item["confidence"] = confidence
-            item["longtitude"] = lng
-            item["latitude"] = lat
-            item["coordinate"] = str(lng) + ',' + str(lat)
 
-        # 生成唯一标识的uuid信息
-        u = uuid.uuid5(uuid.NAMESPACE_OID, item["title"])
-        # 生成12位的整数数字
-        item["bid_id"] = u.time_low
         item["data_from"] = 'https://auction.jd.com'
         item["create_time"] = date.today()
         item["edit_time"] = date.today()
@@ -114,12 +101,16 @@ class JdBidSpider(RedisSpider):
         item["contact"] = response.xpath('//div[@class="pm-support"]//input[@id="consultName"]//@value').extract_first()
         item["phone_num"] = response.xpath('//div[@class="pm-support"]//input[@id="consultTel"]//@value').extract_first()
         # item["deal_time"] = response.xpath('//div[@class="pm-support"]//input[@id="endTime"]//@value').extract_first()
+
         start_price = response.xpath("//div[@class='pm-attachment']//ul/li[@class='fore1'][2]//em/text()").extract_first()
+        if start_price:
+            price = start_price.split('¥')[1].strip().replace(',', '')
 
-
-        item["start_price"] = start_price.split('¥')[1].strip() if start_price else None
-        evaluateprice = response.xpath("//div[@class='pm-attachment']//ul/li[@class='fore3']//em/text()").extract_first()
-        item["evaluatePrice"] = evaluateprice.split('¥')[1] if evaluateprice else None
+            item["start_price"] = str(float(price)*1000)
+        else:
+            item["start_price"] = None
+        # evaluateprice = response.xpath("//div[@class='pm-attachment']//ul/li[@class='fore3']//em/text()").extract_first()
+        # item["evaluatePrice"] = evaluateprice.split('¥')[1] if evaluateprice else None
         # print(item["contact"])
         # print(item["phone_num"])
         address = response.xpath('//div[@class="pm-sub"]//em[@id="paimaiAddress"]/text()').extract_first()
@@ -163,10 +154,11 @@ class JdBidSpider(RedisSpider):
         json_text1 = json.loads(text1)
         if json_text1:
             text1_dict = dict(json_text1)
-            #首先查看拍卖次数有没有大于１０次（下角表是０－９）
+
             if "bidCount" in text1_dict.keys():
                 item["bidCount"] = str(text1_dict["bidCount"])
-                item["delay_count"] = str(text1_dict["delayedCount"])
+                item["delay_count"] = text1_dict["delayedCount"]
+                item["remind_count"] = '0'
                 auctionStatus = str(text1_dict["auctionStatus"])
                 displayStatus = str(text1_dict["displayStatus"])
 
@@ -175,32 +167,36 @@ class JdBidSpider(RedisSpider):
                 "auctionStatus":"0" 预告
                 auctionStatus":"1" 进行中
                 auctionStatus =2 结束
-                    "displayStatus":1," 成交
-                    displayStatus":7 终止
-                    "displayStatus":6 暂缓
-                    "displayStatus":5 撤回
+                "displayStatus":1," 成交
+                displayStatus":7 终止
+                "displayStatus":6 暂缓
+                "displayStatus":5 撤回
                 """
                 if auctionStatus == '0':
                     item["deal_status"] = '00'
+                    item["deal_time"] = item["start_time"] #预告取开始时间
                 elif auctionStatus == '1':
                     item["deal_status"] = '05'
+                    item["deal_time"] = item["start_time"] #正在进行取开始时间
                 elif auctionStatus == '2':
                     if displayStatus == '1':
                         item["deal_status"] = '01'
+                        item["deal_time"] = item["end_time"] #成交取结束时间
                     if displayStatus == '6':
                         item["deal_status"] = '02'
+                        item["deal_time"] = item["end_time"]  # 暂缓取结束时间
                     if displayStatus == '5':
                         item["deal_status"] = '03'
+                        item["deal_time"] = item["end_time"]  # 撤销取结束时间
                     if displayStatus == '7':
                         item["deal_status"] = '04'
+                        item["deal_time"] = item["end_time"]  # 终止取结束时间
 
 
             else:
-                item["bidCount"] = None
+                item["bidCount"] = '0'
 
             item["view_url"] = "https://paimai.jd.com/json/ensure/queryAccess?&paimaiId={}".format(item["item_id"])
-            # print("***"*10)
-            # print(item["view_url"],item["item_id"])
             yield scrapy.Request(
                 url=item["view_url"],
                 callback=self.parse_view_url,
@@ -218,15 +214,53 @@ class JdBidSpider(RedisSpider):
         if json_text1:
             text1_dict = dict(json_text1)
             if "accessEnsureNum" in text1_dict.keys():
-                item["applyCount"] = text1_dict["accessEnsureNum"]
-                item["viewerCount"] = text1_dict["accessNum"]
+                item["applyCount"] = str(text1_dict["accessEnsureNum"])
+                item["viewerCount"] = str(text1_dict["accessNum"])
             else:
-                item["applyCount"] = None
-                item["viewerCount"] = None
-                # print(item["applyCount"])
-                # print(item["viewerCount"])
+                item["applyCount"] = '0'
+                item["viewerCount"] = '0'
+
         item["paimai_detail_url"] = 'https://paimai.jd.com/json/paimaiProduct/productDesciption?productId={}'.format(
             item["skuId"])
+
+        data_item = parse_table(item["paimai_detail_url"])
+        try:
+            item["auction_people"] = data_item["auction_people"]
+        except Exception:
+            item["auction_people"] = ''
+        try:
+            item["jdu_doc_number"] = data_item["jdu_doc_number"]
+        except Exception:
+            item["jdu_doc_number"] = ''
+        try:
+            item["legal_remark"] = data_item["legal_remark"]
+        except Exception:
+            item["legal_remark"] = ''
+        try:
+            item["house_useage_detail"] = data_item["house_useage_detail"]
+        except Exception:
+            item["house_useage_detail"] = ''
+
+
+        data_url = 'https://paimai.jd.com/json/paimaiProduct/queryProductFiles?productId='.format(['item_id'])
+        item['report_url'] = get_rep_url(data_url)
+        if item["house_useage_detail"]:
+            if '商业' in item["house_useage_detail"] or '商服' in item["house_useage_detail"]:
+                item['house_type'] = '03'
+            elif '工业' in item["house_useage_detail"]:
+                item['house_type'] = '06'
+            elif '住宅' in item["house_useage_detail"]:
+                item['house_type'] = '01'
+            elif '办公' in item["house_useage_detail"]:
+                item['house_type'] = '02'
+            elif '车库' in item["house_useage_detail"] or '停车场' in item["house_useage_detail"]:
+                item['house_type'] = '04'
+            else:
+                item['house_type'] = modify_type(item["title"])
+        else:
+            item['house_type'] = modify_type(item["title"])
+
+
         yield scrapy.Request(
             url=item["paimai_detail_url"],
             callback=self.parse_paimai_detail_url,
@@ -241,17 +275,8 @@ class JdBidSpider(RedisSpider):
         if detail_desc:
             detail_desc_temp = ','.join(detail_desc).strip()
             item["detail_desc"] = re.sub('\s', '', detail_desc_temp).replace(',', '').replace('\\n', '')
-            # 获取房屋用途
-            detail_desc_text = re.search(r"用途.*", item["detail_desc"])
-            # 获取房屋性质
-            # detail_desc_text = re.search(r"性质.*",detail_desc_text1)
-            if detail_desc_text:
-
-                item["house_useage_detail"] = detail_desc_text.group(0)
-            else:
-                item["house_useage_detail"] = None
-        else:
-            item["detail_desc"] = None
+            item['house_card_num'] = get_house_cardnum(item["detail_desc"])
+            item['total_house_area'], item['total_land_area'] = get_house_area(item["detail_desc"])
 
         item["court_url"] = "http://paimai.jd.com/json/current/queryVendorInfo.html?vendorId={0}&albumId={1}&paimaiId={2}".format(
             item["vendorId"], item["albumId"],item["item_id"])

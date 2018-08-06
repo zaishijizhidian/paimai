@@ -26,6 +26,8 @@ class JdSipaiItem(scrapy.Item):
     evaluatePrice = scrapy.Field()
     deal_time = scrapy.Field()
     deal_status = scrapy.Field()
+    start_time = scrapy.Field()
+    end_time = scrapy.Field()
 
 
     start_price = scrapy.Field()
@@ -72,3 +74,13 @@ class JdSipaiItem(scrapy.Item):
     pid = scrapy.Field()
     paimai_detail_url = scrapy.Field()
     bid_code = scrapy.Field()
+    house_card_num = scrapy.Field()
+
+    total_house_area = scrapy.Field()
+    total_land_area = scrapy.Field()
+    report_url = scrapy.Field()
+
+    house_type = scrapy.Field()
+    auction_people = scrapy.Field()
+    jdu_doc_number = scrapy.Field()
+    legal_remark = scrapy.Field()
