@@ -27,10 +27,10 @@ class SipaiSpider(scrapy.Spider):
     allowed_domains = ['sf.taobao.com']
     #所有类别的起始网址(更新日期2018-05-16至2018-06-22)
 
-    # today = date.today()
-    today = '2018-08-05'
-    # yes = today - timedelta(days=1)
-    yes = '2018-08-03'
+    today = date.today()
+    # today = '2018-08-05'
+    yes = today - timedelta(days=8)
+    # yes = '2018-08-03'
     start_url = 'https://sf.taobao.com/item_list.htm?spm=a213w.7398504.filter.46.rDN4gv&sorder=-1&auction_start_seg=0&auction_start_from={}&auction_start_to={}'.format(yes,today)
     start_urls = [start_url]
 

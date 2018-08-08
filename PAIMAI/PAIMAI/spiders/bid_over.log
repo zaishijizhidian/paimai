@@ -1,0 +1,5 @@
+2018-08-08 11:11:57 [land_info] WARNING: WARNING on https://sf.taobao.com/item_list.htm?spm=a213w.7398504.filter.46.rDN4gv&sorder=-1&auction_start_seg=0&auction_start_from=2018-08-03&auction_start_to=2018-08-05
+2018-08-08 11:11:57 [land_info] ERROR: info on https://sf.taobao.com/item_list.htm?spm=a213w.7398504.filter.46.rDN4gv&sorder=-1&auction_start_seg=0&auction_start_from=2018-08-03&auction_start_to=2018-08-05
+2018-08-08 11:11:59 [py.warnings] WARNING: /home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/pymysql/cursors.py:170: Warning: (1265, "Data truncated for column 'img_url' at row 1")
+  result = self._query(query)
+
