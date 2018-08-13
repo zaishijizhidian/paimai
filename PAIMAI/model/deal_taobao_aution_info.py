@@ -73,14 +73,17 @@ def parse_table(url):
                     house_useage.append(detail1)
                     # item.update(dict1)
                 elif col == '拍品现状' or col == '标的现状':
-                    house_type = df.iloc[i, 2]
+                    try:
+                        house_type = df.iloc[i, 2]
+                    except Exception:
+                        house_type = df.iloc[i, 1]
                     detail2 = house_type if house_type else ''
                     house_useage.append(detail2)
                 item['legal_remark'] = ','.join(mark)
                 item['house_useage_detail'] = ','.join(house_useage)
 
         except Exception as e:
-            print("error", e)
+            print(e,"error %s" % url)
             pass
         else:
             return item

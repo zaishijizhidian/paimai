@@ -27,19 +27,19 @@ class SipaiSpider(scrapy.Spider):
     allowed_domains = ['sf.taobao.com']
     #所有类别的起始网址(更新日期2018-05-16至2018-06-22)
 
-    today = date.today()
-    # today = '2018-08-05'
-    yes = today - timedelta(days=8)
-    # yes = '2018-08-03'
+    # today = date.today()
+    today = '2018-07-20'
+    # yes = today - timedelta(days=1)
+    yes = '2018-07-19'
     start_url = 'https://sf.taobao.com/item_list.htm?spm=a213w.7398504.filter.46.rDN4gv&sorder=-1&auction_start_seg=0&auction_start_from={}&auction_start_to={}'.format(yes,today)
     start_urls = [start_url]
 
     def parse(self, response):
         #添加日志信息
-        logger.info('info on %s', response.url)
-        logger.warning('WARNING on %s', response.url)
-        logger.debug('info on %s', response.url)
-        logger.error('info on %s', response.url)
+        #logger.info('info on %s', response.url)
+        #logger.warning('WARNING on %s', response.url)
+        #logger.debug('info on %s', response.url)
+        #logger.error('info on %s', response.url)
 
         #获取某一省所有市的url链接
         # print(1111)
@@ -244,14 +244,14 @@ class SipaiSpider(scrapy.Spider):
             try:
                 item["longtitude"] = coordinate_temp.split(',')[0]
                 item["latitude"] = coordinate_temp.split(',')[1]
-                item["coordinate"] = item["latitude"] + ',' + item["longtitude"]
-                item["confidence"] = None
             except Exception as e:
-                print(e)
+                print(e,"error url is",item["itemUrl"])
                 item["coordinate"] = '0'
                 item["latitude"] = '0'
                 item["longtitude"] = '0'
                 item["confidence"] = None
+            item["coordinate"] = item["latitude"] + ',' + item["longtitude"]
+            item["confidence"] = None
 
 
         else:

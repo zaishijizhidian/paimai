@@ -11,9 +11,14 @@ from pymongo import MongoClient
 
 def conn():
 
-    es = Elasticsearch("http://elastic:Spiderman2018@es-cn-mp90n4agq000mftri.public.elasticsearch.aliyuncs.com:9200/", verify_certs=False,timeout = 60)
-    db = pymysql.connect(host='192.168.11.251', user='root', password='youtong123', db='sipai', local_infile=1,
-                         charset='utf8')
+    # es = Elasticsearch("http://elastic:Spiderman2018@es-cn-mp90n4agq000mftri.public.elasticsearch.aliyuncs.com:9200/", verify_certs=False,timeout = 60)
+    # db = pymysql.connect(host='192.168.11.251', user='root', password='youtong123', db='sipai', local_infile=1,
+    #                      charset='utf8')
+    es = Elasticsearch("http://test.npacn.com:9200/", verify_certs=False, timeout=60)
+    # db = pymysql.connect(host='localhost', user='root', password='youtong123', db='sipai', local_infile=1,
+    # charset='utf8')
+    db = pymysql.connect(host='data.npacn.com', port=3306, user='youtong', password='duc06LEQpgoP', database='sipai',
+                           charset='utf8')
 
     cursor = db.cursor()
 
@@ -21,7 +26,7 @@ def conn():
     cursor.execute(sql)
     data = cursor.fetchall()
     for dataInfo in data:
-        print(dataInfo)
+        # print(dataInfo)
         package = []
         row = {
             "id": dataInfo[1],

@@ -1,0 +1,67 @@
+2018-08-09 09:41:43 [twisted] CRITICAL: Unhandled error in Deferred:
+2018-08-09 09:41:43 [twisted] CRITICAL: 
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/twisted/internet/defer.py", line 1386, in _inlineCallbacks
+    result = g.send(result)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/crawler.py", line 79, in crawl
+    yield self.engine.open_spider(self.spider, start_requests)
+redis.exceptions.ResponseError: NOAUTH Authentication required.
+2018-08-09 09:43:34 [twisted] CRITICAL: Unhandled error in Deferred:
+2018-08-09 09:43:34 [twisted] CRITICAL: 
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/redis/connection.py", line 484, in connect
+    sock = self._connect()
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/redis/connection.py", line 541, in _connect
+    raise err
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/redis/connection.py", line 529, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/redis/client.py", line 667, in execute_command
+    connection.send_command(*args)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/redis/connection.py", line 610, in send_command
+    self.send_packed_command(self.pack_command(*args))
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/redis/connection.py", line 585, in send_packed_command
+    self.connect()
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/redis/connection.py", line 489, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to 127.0.0.1:6379. Connection refused.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/redis/connection.py", line 484, in connect
+    sock = self._connect()
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/redis/connection.py", line 541, in _connect
+    raise err
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/redis/connection.py", line 529, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/twisted/internet/defer.py", line 1386, in _inlineCallbacks
+    result = g.send(result)
+  File "/home/python/.virtualenvs/py3_spider/lib/python3.5/site-packages/scrapy/crawler.py", line 79, in crawl
+    yield self.engine.open_spider(self.spider, start_requests)
+redis.exceptions.ConnectionError: Error 111 connecting to 127.0.0.1:6379. Connection refused.
+2018-08-09 10:01:30 [jd_info] WARNING: WARNING on https://auction.jd.com/getJudicatureList.html?&sortField=3&page=1&limit=40&provinceId=13&cityId=1053
+2018-08-09 10:01:30 [jd_info] ERROR: info on https://auction.jd.com/getJudicatureList.html?&sortField=3&page=1&limit=40&provinceId=13&cityId=1053
+2018-08-09 10:01:52 [jd_info] WARNING: WARNING on https://auction.jd.com/getJudicatureList.html?&sortField=3&page=1&limit=40&provinceId=13&cityId=1042
+2018-08-09 10:01:52 [jd_info] ERROR: info on https://auction.jd.com/getJudicatureList.html?&sortField=3&page=1&limit=40&provinceId=13&cityId=1042
+2018-08-09 10:02:40 [jd_info] WARNING: WARNING on https://auction.jd.com/getJudicatureList.html?&sortField=3&page=1&limit=40&provinceId=13&cityId=1032
+2018-08-09 10:02:40 [jd_info] ERROR: info on https://auction.jd.com/getJudicatureList.html?&sortField=3&page=1&limit=40&provinceId=13&cityId=1032
+2018-08-09 10:03:19 [jd_info] WARNING: WARNING on https://auction.jd.com/getJudicatureList.html?&sortField=3&page=1&limit=40&provinceId=13&cityId=1025
+2018-08-09 10:03:19 [jd_info] ERROR: info on https://auction.jd.com/getJudicatureList.html?&sortField=3&page=1&limit=40&provinceId=13&cityId=1025
+2018-08-09 10:03:41 [jd_info] WARNING: WARNING on https://auction.jd.com/getJudicatureList.html?&sortField=3&page=1&limit=40&provinceId=13&cityId=1022
+2018-08-09 10:03:41 [jd_info] ERROR: info on https://auction.jd.com/getJudicatureList.html?&sortField=3&page=1&limit=40&provinceId=13&cityId=1022
+2018-08-09 10:03:43 [jd_info] WARNING: WARNING on https://auction.jd.com/getJudicatureList.html?&sortField=3&page=1&limit=40&provinceId=13&cityId=1016
+2018-08-09 10:03:43 [jd_info] ERROR: info on https://auction.jd.com/getJudicatureList.html?&sortField=3&page=1&limit=40&provinceId=13&cityId=1016
+2018-08-09 10:03:49 [jd_info] WARNING: WARNING on https://auction.jd.com/getJudicatureList.html?&sortField=3&page=6&limit=40&provinceId=13&cityId=1007
+2018-08-09 10:03:49 [jd_info] ERROR: info on https://auction.jd.com/getJudicatureList.html?&sortField=3&page=6&limit=40&provinceId=13&cityId=1007
+2018-08-09 10:05:49 [jd_info] WARNING: WARNING on https://auction.jd.com/getJudicatureList.html?&sortField=3&page=5&limit=40&provinceId=13&cityId=1007
+2018-08-09 10:05:49 [jd_info] ERROR: info on https://auction.jd.com/getJudicatureList.html?&sortField=3&page=5&limit=40&provinceId=13&cityId=1007

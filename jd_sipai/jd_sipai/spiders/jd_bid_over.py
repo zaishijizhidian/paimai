@@ -5,7 +5,10 @@ import uuid
 from copy import deepcopy
 from datetime import date
 
+import redis
 import scrapy
+from scrapy_redis.spiders import RedisSpider
+from scrapy.http import Request
 
 from get_data_id import *
 from jd_sipai.module.coordinate import get_latlng
@@ -17,13 +20,19 @@ from model.modify_house_type import modify_type
 logger = logging.getLogger("jd_info")
 
 from jd_sipai.items import JdSipaiItem
-class JdBidSpider(scrapy.Spider):
-# class JdBidSpider(RedisSpider):
+# class JdBidSpider(scrapy.Spider):
+class JdBidSpider(RedisSpider):
     name = 'jd_bid_over'
     allowed_domains = ['jd.com','auction.jd.com']
+    # redis_key = 'JdBidSpider:start_urls'
+    # redis_db = redis.Redis(host='116.62.190.193', port=6379,password='123456', db=2)
     start_urls = iter(get_item_url())
+    print([url for url in start_urls])
+    # for url in start_urls:
+    #     redis_db.lpush(redis_key,url)
+    # print("url插入成功")
+
     # def __int__(self):
-    #     # redis_key = 'JdBidSpider:start_urls'
     #     # start_urls = ['https://auction.jd.com/getJudicatureList.html?callback=jQuery5223987&page=1&limit=40&_=1526613080129']
     #     for item_url in start_urls:
     #         yield scrapy.Request(

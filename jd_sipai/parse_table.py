@@ -7,8 +7,7 @@ import html5lib
 from multiprocessing.pool import ThreadPool
 import pymysql
 import pandas as pd
-import sqlalchemy
-from sqlalchemy import create_engine
+
 def parse_table(url):
     res = requests.get(url)
     response = etree.HTML(res.text)

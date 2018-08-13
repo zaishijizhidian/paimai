@@ -15,17 +15,17 @@ table_name = 'sm_auction'
 
 class update_data:
     def __init__(self):
-        self.conn = pymysql.connect(  # host='localhost',
-            host='192.168.11.251',
-            port=3306,
-            user='root',
-            password='youtong123',
-            # password='mysql',
-            database='sipai',
-            charset='utf8')
+        # self.conn = pymysql.connect(  # host='localhost',
+        #     host='192.168.11.251',
+        #     port=3306,
+        #     user='root',
+        #     password='youtong123',
+        #     # password='mysql',
+        #     database='sipai',
+        #     charset='utf8')
         # )  # 默认返回元祖，加上这个参数返回的是字典结构
-        # self.conn = pymysql.connect(host='data.npacn.com', port=3306, user='youtong', password='duc06LEQpgoP',
-        #                        database='sipai', charset='utf8')
+        self.conn = pymysql.connect(host='data.npacn.com', port=3306, user='youtong', password='duc06LEQpgoP',
+                               database='sipai', charset='utf8')
 
     def write_id(self):
         conn = self.conn
@@ -54,8 +54,8 @@ class update_data:
             # sql1 = "SELECT id,title from land_sum_info a WHERE a.confidence is not Null;"
             # sql1 = "SELECT id,trade_date,deal_price,auction_status FROM `test_increment_sm_auction` limit 10;"
             # 直接在增量数据increment_data中提取数据
-            sql1 = "SELECT * FROM `increment_data`;"
-            # sql1 = "SELECT * FROM `increment_data_jd`;"
+            # sql1 = "SELECT * FROM `increment_data`;"
+            sql1 = "SELECT * FROM `update_new`;"
             cur1.execute(sql1)
             # 设定游标从第一个开始移动
             cur1.scroll(0, mode='absolute')
@@ -172,5 +172,5 @@ class update_data:
 
 if __name__ == '__main__':
     update_data = update_data()
-# update_data.write_id()
+    # update_data.write_id()
     update_data.update_id()
