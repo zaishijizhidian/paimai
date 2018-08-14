@@ -27,19 +27,19 @@ class SipaiSpider(scrapy.Spider):
     allowed_domains = ['sf.taobao.com']
     #所有类别的起始网址(更新日期2018-05-16至2018-06-22)
 
-    # today = date.today()
-    today = '2018-07-20'
+    today = date.today()
+    # today = '2018-07-20'
     # yes = today - timedelta(days=1)
-    yes = '2018-07-19'
+    yes = '2018-08-09'
     start_url = 'https://sf.taobao.com/item_list.htm?spm=a213w.7398504.filter.46.rDN4gv&sorder=-1&auction_start_seg=0&auction_start_from={}&auction_start_to={}'.format(yes,today)
     start_urls = [start_url]
 
     def parse(self, response):
         #添加日志信息
-        #logger.info('info on %s', response.url)
-        #logger.warning('WARNING on %s', response.url)
-        #logger.debug('info on %s', response.url)
-        #logger.error('info on %s', response.url)
+        logger.info('info on %s', response.url)
+        logger.warning('WARNING on %s', response.url)
+        logger.debug('info on %s', response.url)
+        logger.error('info on %s', response.url)
 
         #获取某一省所有市的url链接
         # print(1111)

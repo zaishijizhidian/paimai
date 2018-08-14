@@ -47,8 +47,8 @@ USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, li
 # AUTOTHROTTLE_START_DELAY = 1
 
 #日志设置
-#LOG_FILE = './bid_over.log'
-#LOG_LEVEL = "WARNING"
+LOG_FILE = '../bid_over.log'
+LOG_LEVEL = "WARNING"
 
 
 

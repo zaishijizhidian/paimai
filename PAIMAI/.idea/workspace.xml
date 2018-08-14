@@ -2,21 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7472d628-6703-4ffd-905f-6d92abf98c03" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PAIMAI/spiders/bid_over.log" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../jd_sipai/jd_sipai.log" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../zh-NER-TF" afterPath="$PROJECT_DIR$/../zh-NER-TF" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.idea/11.iml" afterPath="$PROJECT_DIR$/../.idea/11.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.idea/workspace.xml" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/PAIMAI.iml" afterPath="$PROJECT_DIR$/.idea/PAIMAI.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data.txt" afterPath="$PROJECT_DIR$/data.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/deal_taobao_aution_info.py" afterPath="$PROJECT_DIR$/model/deal_taobao_aution_info.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.py" afterPath="$PROJECT_DIR$/test.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/update_sipai.py" afterPath="$PROJECT_DIR$/update_sipai.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../jd_sipai/jd_sipai/settings.py" afterPath="$PROJECT_DIR$/../jd_sipai/jd_sipai/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../jd_sipai/jd_sipai/spiders/jd_bid_over.py" afterPath="$PROJECT_DIR$/../jd_sipai/jd_sipai/spiders/jd_bid_over.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../jd_sipai/parse_table.py" afterPath="$PROJECT_DIR$/../jd_sipai/parse_table.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../zh-NER-TF/get_data.py" afterPath="$PROJECT_DIR$/../zh-NER-TF/get_data.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PAIMAI/settings.py" afterPath="$PROJECT_DIR$/PAIMAI/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PAIMAI/spiders/bid_over.py" afterPath="$PROJECT_DIR$/PAIMAI/spiders/bid_over.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -53,7 +44,7 @@
         <entry file="file://$PROJECT_DIR$/sipai/sipai_2_es.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-1258">
-              <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding>
                 <element signature="e#24#53#0" expanded="true" />
                 <marker date="1533883273864" expanded="true" signature="1017:1041" ph="select * fro... sm_auction" />
@@ -66,7 +57,7 @@
         <entry file="file://$PROJECT_DIR$/PAIMAI/settings.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="968">
-              <caret line="50" column="1" lean-forward="false" selection-start-line="50" selection-start-column="1" selection-end-line="50" selection-end-column="1" />
+              <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -141,8 +132,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="65" />
     <option name="y" value="24" />
-    <option name="width" value="1851" />
-    <option name="height" value="915" />
+    <option name="width" value="1504" />
+    <option name="height" value="804" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -579,16 +570,16 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="24" width="1851" height="915" extended-state="6" />
+    <frame x="65" y="24" width="1504" height="804" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14759536" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18262655" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25487804" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2947814" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20121951" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
@@ -903,7 +894,7 @@
     <entry file="file://$PROJECT_DIR$/PAIMAI/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="968">
-          <caret line="50" column="1" lean-forward="false" selection-start-line="50" selection-start-column="1" selection-end-line="50" selection-end-column="1" />
+          <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -921,7 +912,7 @@
     <entry file="file://$PROJECT_DIR$/sipai/sipai_2_es.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1258">
-          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding>
             <element signature="e#24#53#0" expanded="true" />
             <marker date="1533883273864" expanded="true" signature="1017:1041" ph="select * fro... sm_auction" />
