@@ -6,8 +6,10 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.idea/11.iml" afterPath="$PROJECT_DIR$/../.idea/11.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.idea/workspace.xml" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PAIMAI/settings.py" afterPath="$PROJECT_DIR$/PAIMAI/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PAIMAI/spiders/bid_over.py" afterPath="$PROJECT_DIR$/PAIMAI/spiders/bid_over.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ProxyPool/proxypool/crawler.py" afterPath="$PROJECT_DIR$/../ProxyPool/proxypool/crawler.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bid_over.log" afterPath="$PROJECT_DIR$/../bid_over.log" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../jd_sipai/jd_sipai/module/deal_jd_aution_info.py" afterPath="$PROJECT_DIR$/../jd_sipai/jd_sipai/module/deal_jd_aution_info.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../jd_sipai/jd_sipai/spiders/jd_bid_over.py" afterPath="$PROJECT_DIR$/../jd_sipai/jd_sipai/spiders/jd_bid_over.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,7 +21,7 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/PAIMAI$sipai_2_es.coverage" NAME="sipai_2_es Coverage Results" MODIFIED="1533883357465" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/sipai" />
     <SUITE FILE_PATH="coverage/PAIMAI$test.coverage" NAME="test Coverage Results" MODIFIED="1529892330417" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PAIMAI$main.coverage" NAME="main Coverage Results" MODIFIED="1533869268568" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PAIMAI$main.coverage" NAME="main Coverage Results" MODIFIED="1535017510190" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PAIMAI$deal_json_data.coverage" NAME="deal_json_data Coverage Results" MODIFIED="1529998931901" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/sipai" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -31,23 +33,10 @@
       <file leaf-file-name="bid_over.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PAIMAI/spiders/bid_over.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1136">
-              <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+            <state relative-caret-position="388">
+              <caret line="33" column="122" lean-forward="false" selection-start-line="33" selection-start-column="122" selection-end-line="33" selection-end-column="122" />
               <folding>
                 <element signature="e#24#35#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sipai_2_es.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/sipai/sipai_2_es.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1258">
-              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-              <folding>
-                <element signature="e#24#53#0" expanded="true" />
-                <marker date="1533883273864" expanded="true" signature="1017:1041" ph="select * fro... sm_auction" />
               </folding>
             </state>
           </provider>
@@ -56,18 +45,20 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PAIMAI/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="968">
+            <state relative-caret-position="924">
               <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-              <folding />
+              <folding>
+                <marker date="1535020790319" expanded="true" signature="3938:5500" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+            <state relative-caret-position="264">
+              <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding>
                 <element signature="e#36#45#0" expanded="true" />
               </folding>
@@ -78,10 +69,24 @@
       <file leaf-file-name="pipelines.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PAIMAI/pipelines.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="33" column="8" lean-forward="false" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="138" />
+            <state relative-caret-position="110">
+              <caret line="5" column="12" lean-forward="true" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
               <folding>
-                <marker date="1533697845322" expanded="true" signature="2319:2351" ph="INSERT INTO missing_value... " />
+                <marker date="1534230829672" expanded="true" signature="2319:2351" ph="INSERT INTO missing_value... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="middlewares.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PAIMAI/middlewares.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="528">
+              <caret line="30" column="45" lean-forward="false" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="45" />
+              <folding>
+                <element signature="e#167#181#0" expanded="true" />
+                <marker date="1535020790311" expanded="true" signature="732:983" ph="..." />
+                <marker date="1535020790311" expanded="true" signature="989:1313" ph="..." />
               </folding>
             </state>
           </provider>
@@ -113,10 +118,11 @@
         <option value="$PROJECT_DIR$/PAIMAI/pipelines.py" />
         <option value="$PROJECT_DIR$/model/deal_house_property_cardnum.py" />
         <option value="$PROJECT_DIR$/bid_over.log" />
-        <option value="$PROJECT_DIR$/main.py" />
-        <option value="$PROJECT_DIR$/PAIMAI/spiders/bid_over.py" />
         <option value="$PROJECT_DIR$/PAIMAI/settings.py" />
         <option value="$PROJECT_DIR$/sipai/sipai_2_es.py" />
+        <option value="$PROJECT_DIR$/PAIMAI/spiders/bid_over.py" />
+        <option value="$PROJECT_DIR$/PAIMAI/middlewares.py" />
+        <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
@@ -132,8 +138,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="65" />
     <option name="y" value="24" />
-    <option name="width" value="1504" />
-    <option name="height" value="804" />
+    <option name="width" value="1851" />
+    <option name="height" value="915" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -164,20 +170,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="PAIMAI" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PAIMAI" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PAIMAI" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sipai" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -243,7 +235,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.sipai_2_es">
+  <component name="RunManager" selected="Python.main">
     <configuration default="false" name="deal_json_data" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -538,8 +530,8 @@
     </list>
     <recent_temporary>
       <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Python.sipai_2_es" />
-        <item index="1" class="java.lang.String" itemvalue="Python.main" />
+        <item index="0" class="java.lang.String" itemvalue="Python.main" />
+        <item index="1" class="java.lang.String" itemvalue="Python.sipai_2_es" />
         <item index="2" class="java.lang.String" itemvalue="Python.test" />
         <item index="3" class="java.lang.String" itemvalue="Python.deal_json_data" />
       </list>
@@ -570,16 +562,16 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="24" width="1504" height="804" extended-state="6" />
-    <editor active="false" />
+    <frame x="65" y="24" width="1851" height="915" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18262655" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14759536" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2947814" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.68658537" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20121951" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
@@ -610,16 +602,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/PAIMAI/pipelines.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding>
-            <marker date="1533697845322" expanded="true" signature="2319:2351" ph="INSERT INTO missing_value... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PAIMAI/spiders/bid_over.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -871,40 +853,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding>
-            <element signature="e#36#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PAIMAI/spiders/bid_over.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1136">
-          <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-          <folding>
-            <element signature="e#24#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PAIMAI/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="968">
+        <state relative-caret-position="924">
           <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PAIMAI/pipelines.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="33" column="8" lean-forward="false" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="138" />
           <folding>
-            <marker date="1533697845322" expanded="true" signature="2319:2351" ph="INSERT INTO missing_value... " />
+            <marker date="1535020790319" expanded="true" signature="3938:5500" ph="..." />
           </folding>
         </state>
       </provider>
@@ -914,8 +868,49 @@
         <state relative-caret-position="-1258">
           <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding>
-            <element signature="e#24#53#0" expanded="true" />
-            <marker date="1533883273864" expanded="true" signature="1017:1041" ph="select * fro... sm_auction" />
+            <element signature="e#24#53#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PAIMAI/spiders/bid_over.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="33" column="122" lean-forward="false" selection-start-line="33" selection-start-column="122" selection-end-line="33" selection-end-column="122" />
+          <folding>
+            <element signature="e#24#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PAIMAI/pipelines.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" column="12" lean-forward="true" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+          <folding>
+            <marker date="1534230829672" expanded="true" signature="2319:2351" ph="INSERT INTO missing_value... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PAIMAI/middlewares.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="30" column="45" lean-forward="false" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="45" />
+          <folding>
+            <element signature="e#167#181#0" expanded="true" />
+            <marker date="1535020790311" expanded="true" signature="732:983" ph="..." />
+            <marker date="1535020790311" expanded="true" signature="989:1313" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding>
+            <element signature="e#36#45#0" expanded="true" />
           </folding>
         </state>
       </provider>

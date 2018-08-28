@@ -19,7 +19,7 @@ from model.deal_house_area import get_house_area
 from model.deal_house_property_cardnum import get_house_cardnum
 from model.modify_house_type import modify_type
 
-logger = logging.getLogger("land_info")
+# logger = logging.getLogger("land_info")
 
 class SipaiSpider(scrapy.Spider):
     name = "bid_over"
@@ -27,19 +27,19 @@ class SipaiSpider(scrapy.Spider):
     allowed_domains = ['sf.taobao.com']
     #所有类别的起始网址(更新日期2018-05-16至2018-06-22)
 
-    today = date.today()
-    # today = '2018-07-20'
-    # yes = today - timedelta(days=1)
-    yes = '2018-08-09'
-    start_url = 'https://sf.taobao.com/item_list.htm?spm=a213w.7398504.filter.46.rDN4gv&sorder=-1&auction_start_seg=0&auction_start_from={}&auction_start_to={}'.format(yes,today)
+    # today = date.today()
+    today = '2018-08-26'
+    # yes = today - timedelta(days=2)
+    yes = '2018-08-17'
+    start_url = 'https://sf.taobao.com/item_list.htm?auction_start_from={0}&auction_start_to={1}&spm=a213w.3064813.9001.2'.format(yes,today)
     start_urls = [start_url]
 
     def parse(self, response):
         #添加日志信息
-        logger.info('info on %s', response.url)
-        logger.warning('WARNING on %s', response.url)
-        logger.debug('info on %s', response.url)
-        logger.error('info on %s', response.url)
+        # logger.info('info on %s', response.url)
+        # logger.warning('WARNING on %s', response.url)
+        # logger.debug('info on %s', response.url)
+        # logger.error('info on %s', response.url)
 
         #获取某一省所有市的url链接
         # print(1111)
@@ -262,16 +262,22 @@ class SipaiSpider(scrapy.Spider):
             item["coordinate"] = str(lat) + ',' + str(lng)
 
         # print(item["coordinate"])
-        Location = response.xpath("//div[@class='detail-common-text']//div[@id='itemAddress']/text()").extract_first()
-        if Location:
-            ls = Location.split(" ")
+        Location = response.xpath("//div[@id='itemAddress']//text()").extract_first().strip()
+        # if Location:
+        ls = Location.split(" ") if Location else None
+        if ls:
             item["province"] = ls[0]
-            item["city"] = ls[1]
+            item["city"] = ls[1] if len(ls) >= 2 else None
             item["town"] = ls[2] if len(ls) >= 3 else None
-            item["detailAdrress"] = response.xpath("//div[@class='detail-common-text']//div[@id='itemAddressDetail']/text()").extract_first().strip()
+            item["detailAdrress"] = response.xpath("//div[@id='itemAddressDetail']//text()").extract_first().strip()
+        else:
+            item["province"] = None
+            item["city"] = None
+            item["town"] = None
+            item["detailAdrress"] = None
 
 
-        # 标的物详情描述,正则匹配（异步加载）
+            # 标的物详情描述,正则匹配（异步加载）
         detail = response.xpath("//div[@class='detail-common-text clearfix']/@data-from").extract_first()
         # 获取json数据链接
         detail_url =  'https:' + detail
